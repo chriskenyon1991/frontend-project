@@ -28,6 +28,20 @@ class Articles extends React.Component{
     }
     }
 
+    componentDidUpdate(prevProps, prevState){
+        console.log('hello')
+        console.log(prevProps)
+        console.log(prevState)
+        if (prevProps.location.search !== this.props.location.search){
+            axios.get(`https://chris-kenyon-nc-news.herokuapp.com/api/articles${this.props.location.search}`).then((res) => {
+        const articlesArray = [...res.data.articles]
+        this.setState({
+            articles: articlesArray,
+            location: this.props.location.search
+        })
+        })
+        }
+    }
     
 
     render(){

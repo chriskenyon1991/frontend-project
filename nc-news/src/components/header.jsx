@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios'
-import { Router, Link } from "@reach/router"
-import Articles from './articles'
+import { Link } from "@reach/router"
 
 
 class Header extends React.Component{
@@ -21,7 +20,7 @@ class Header extends React.Component{
 
     render(){
         return <div className='header'>
-                <h2>Welcome To Northcoders News</h2>
+                <h2><span className='secondaryColor'>&lt;</span>Welcome To Northcoders News<span className='secondaryColor'>/&gt;</span></h2>
                 <div className='topics'>
              {this.state.topics.map((topic) => {
             return <>
