@@ -17,6 +17,11 @@ a {
   margin: 10px;
 }
 
+a:hover {
+  color: #b7c219;
+  transition: ease-in 0.25s;
+}
+
 .topics {
   background-color: #282c34;
   position: absolute;

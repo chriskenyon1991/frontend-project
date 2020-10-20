@@ -5,7 +5,8 @@ import axios from 'axios'
 
 class Articles extends React.Component{
     state = {
-        articles: []
+        articles: [],
+        location:null
     }
 
     componentDidMount(){
@@ -13,7 +14,8 @@ class Articles extends React.Component{
             axios.get(`https://chris-kenyon-nc-news.herokuapp.com/api/articles${this.props.location.search}`).then((res) => {
         const articlesArray = [...res.data.articles]
         this.setState({
-            articles: articlesArray
+            articles: articlesArray,
+            location: this.props.location.search
         })
         })
     }else{
@@ -27,10 +29,12 @@ class Articles extends React.Component{
     }
     }
 
-
+    
 
     render(){
+        
         console.log(this.props)
+        console.log(this.state)
         return this.state.articles.map((article) => {
         return <div className='article'>
             <h3>{article.author}</h3>
