@@ -1,14 +1,28 @@
+import { Router } from '@reach/router';
 import React from 'react';
 import './App.css';
+import Articles from './components/articles';
+import Header from './components/header'
+// import Topics from './components/topics'
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <h1>Welcome to nc news</h1>
-      </header>
-    </div>
-  );
+class App extends React.Component{
+
+  state = {
+    username:'guest',
+    Articles: []
+  }
+
+  render() {
+    return <div className="App">
+      <Header/>
+      {/* <Topics /> */}
+      <Router>
+        <Articles path='/' />
+        <Articles path='/articles'/>
+      </Router>
+
+      </div>
+  }
 }
 
 export default App;

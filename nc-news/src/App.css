@@ -1,14 +1,44 @@
-.App {
-  text-align: center;
-}
+/* ----------header-------------------------------------- */
 
-.App-header {
+.header {
   background-color: #282c34;
   height: 100px;
+  width: 100%;
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
   font-size: calc(10px + 2vmin);
   color: white;
+}
+
+a {
+  color: #fff;
+  text-decoration: none;
+  font-size: 15px;
+  margin: 10px;
+}
+
+.topics {
+  background-color: #282c34;
+  position: absolute;
+  right: 0px;
+  top: 100px;
+  display: flex;
+  flex-direction: column;
+  height: auto;
+  padding: 10px;
+  width: 200px;
+}
+
+/* ----------header-------------------------------------- */
+
+.article {
+  width: 60%;
+  margin-top: 100px;
+  padding: 20px;
+  background-color: #d5daee;
+  border: 1px solid #c9cad1;
+}
+
+.article:hover {
+  border: 1px solid #8f919b;
 }
