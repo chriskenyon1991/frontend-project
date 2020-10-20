@@ -9,6 +9,7 @@ class Topic extends React.Component{
     state = {
         topics: []
     }
+    
     componentDidMount(){
         axios.get('https://chris-kenyon-nc-news.herokuapp.com/api/topics').then((res) => {
         const topicsArray = [...res.data.topics]

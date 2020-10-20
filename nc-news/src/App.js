@@ -19,7 +19,6 @@ class App extends React.Component{
       <Router>
         <Articles path='/' />
         <Articles path='/articles'/>
-        
       </Router>
 
       </div>
