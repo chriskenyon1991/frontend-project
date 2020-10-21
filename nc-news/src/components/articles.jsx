@@ -45,20 +45,21 @@ class Articles extends React.Component{
     
 
     render(){
-        
-        console.log(this.props)
-        console.log(this.state)
-        return this.state.articles.map((article) => {
-        return <div className='article'>
-            <h3>{article.author}</h3>
-            <h4>{article.title}</h4>
-            <p>{article.body}</p>
-        <p>votes: {article.votes}</p>
-        <p>comments: {article.comment_count}</p>
-        <p>{article.created_at}</p>
+        return <>
+        <div id='buffer'></div>
+            {this.state.articles.map((article) => {
+            return <div className='articleCard'>
+                <h3 id='user'>{article.author}</h3>
+                <h4 id='title'>{article.title}</h4>
+                <p id='body'>{article.body}</p>
+                <div id='bottomrow'>
+            <p id='votes'>votes: {article.votes}</p>
+            <p id='comments'>comments: {article.comment_count}</p>
+            <p id='date'>{article.created_at}</p>
             </div>
-
-        })
+                </div>
+            })}
+        </>
         
     }
 }
