@@ -8,19 +8,11 @@ import SideBar from './components/sideBar'
 
 class App extends React.Component{
 
-  state = {
-    username:'guest',
-    Articles: []
-  }
 
   render() {
     return <div className="App">
-     
       <Header/>
-      
-  
       <SideBar/>
-    
       <Router>
         <Articles path='/' />
         <Articles path='/articles'/>

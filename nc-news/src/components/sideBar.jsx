@@ -32,13 +32,13 @@ class SideBar extends React.Component{
                     <p><span className='secondaryColor'>&lt;</span>Topics<span className='secondaryColor'>/&gt;</span></p>
              {this.state.topics.map((topic) => {
             return <>
-            <Link to={'/articles?topic=' + topic.slug}>{topic.description}</Link>
+            <Link className='sidelink' to={'/articles?topic=' + topic.slug}>{topic.description}</Link>
             </>
         })}
         <p><span className='secondaryColor'>&lt;</span>Users<span className='secondaryColor'>/&gt;</span></p>
         {this.state.users.map((user) => {
             return <>
-            <Link to={'/users/' + user.username}>{user.username}</Link>
+            <Link className='sidelink' to={'/articles?author=' + user.username}>{user.username}</Link>
             </>
         })}
         </div>           

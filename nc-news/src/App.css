@@ -15,14 +15,14 @@
   color: #ba1f31;
 }
 
-a {
+.sidelink {
   color: #fff;
   text-decoration: none;
   font-size: 15px;
   margin: 10px;
 }
 
-a:hover {
+.sidelink:hover {
   color: #ba1f31;
   transition: ease-in 0.25s;
 }
@@ -81,6 +81,19 @@ a:hover {
   margin: 0px;
   padding-right: 0;
   width: 50%;
+}
+
+#title:hover {
+  cursor: pointer;
+}
+
+#topofcard {
+  text-decoration: none;
+  color: #282c34;
+}
+
+#topofcard:hover {
+  text-decoration: none;
 }
 
 #bottomrow {
