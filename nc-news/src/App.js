@@ -15,8 +15,11 @@ class App extends React.Component{
       <SideBar/>
       <Router>
         <Articles path='/' />
-        <Articles path='/articles'/>
+        <Articles path='/articles/:article_id'/>
+        <Articles path='/articles/topic/:slug'/>
+        <Articles path='/articles/author/:username'/>
       </Router>
+    
       </div>
   }
 }

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios'
 import { Link } from "@reach/router"
+import Comments from '../components/comments'
 
 
 
@@ -8,42 +9,62 @@ class Articles extends React.Component{
     state = {
         articles: [],
         user: [],
-        location:null
+        comments:[]
     }
 
     componentDidMount(){
 
-        axios.get('https://chris-kenyon-nc-news.herokuapp.com/api/users').then((res) =>{
-            console.log(res)
-            const usersArray = [...res.data.users]
-            this.setState({user: usersArray})
-        })
+        // axios.get('https://chris-kenyon-nc-news.herokuapp.com/api/users').then((res) =>{
+        //     const usersArray = [...res.data.users]
+        //     this.setState({user: usersArray})
+        // })
 
-        if(this.props.location.search){
-            axios.get(`https://chris-kenyon-nc-news.herokuapp.com/api/articles${this.props.location.search}`).then((res) => {
+        if(this.props.path === '/'){
+            axios.get(`https://chris-kenyon-nc-news.herokuapp.com/api/articles`).then((res) => {
         const articlesArray = [...res.data.articles]
         this.setState({
             articles: articlesArray,
-            location: this.props.location.search
         })
         })
-    }else{
-        axios.get('https://chris-kenyon-nc-news.herokuapp.com/api/articles').then((res) => {
+    }else if(this.props.path === '/articles/topic/:slug'){
+        axios.get(`https://chris-kenyon-nc-news.herokuapp.com/api/articles?topic=${this.props.slug}`).then((res) => {
         const articlesArray = [...res.data.articles]
         this.setState({
-            articles: articlesArray
+            articles: articlesArray,
         })
         })
+    }else if(this.props.path === '/articles/author/:username'){
+        axios.get(`https://chris-kenyon-nc-news.herokuapp.com/api/articles?author=${this.props.username}`).then((res) => {
+        const articlesArray = [...res.data.articles]
+        this.setState({
+            articles: articlesArray,
+        })
+        })
+    }else if(this.props.path === '/articles/:article_id'){
+        axios.get(`https://chris-kenyon-nc-news.herokuapp.com/api/articles/${this.props.article_id}`).then((res) => {
+            const articlesArray = [res.data.article]
+            this.setState({
+                articles: articlesArray,
+            })
+            }) 
     }
     }
 
     componentDidUpdate(prevProps, prevState){
-        if (prevProps.location.search !== this.props.location.search){
-            axios.get(`https://chris-kenyon-nc-news.herokuapp.com/api/articles${this.props.location.search}`).then((res) => {
+        if (prevProps.uri !== this.props.uri && prevProps.path === '/articles/topic/:slug' ){
+            axios.get(`https://chris-kenyon-nc-news.herokuapp.com/api/articles?topic=${this.props.slug}`).then((res) => {
         const articlesArray = [...res.data.articles]
         this.setState({
             articles: articlesArray,
-            location: this.props.location.search
+            slug: this.props.slug
+        })
+        })
+        }else if(prevProps.uri !== this.props.uri && prevProps.path === '/articles/author/:username'){
+            axios.get(`https://chris-kenyon-nc-news.herokuapp.com/api/articles?author=${this.props.username}`).then((res) => {
+        const articlesArray = [...res.data.articles]
+        this.setState({
+            articles: articlesArray,
+            slug: this.props.slug
         })
         })
         }
@@ -55,22 +76,21 @@ class Articles extends React.Component{
         return <>
         <div id='buffer'></div>
             {this.state.articles.map((article) => {
-            return <div className='articleCard'>
-                {/*- onclick event here i think ---------------------------<<-----<<------*/}
-                <Link to={'/articles/' + article.author} id='topofcard'>
-                <h3 id='user'>{article.author}</h3>
+            return <div key={article.article_id} className='articleCard'>
+                <Link to={'/articles/' + article.article_id} id='topofcard'>
+                <h3 className='user'>{article.author}</h3>
                 <h4 id='title'>{article.title}</h4>
-                <p id='body'>{article.body}</p>
+                <p className='body'>{article.body}</p>
                 </Link>
-                <div id='bottomrow'>
-            <p id='votes'>votes: {article.votes}</p>
+                <div className='bottomrow'>
+            <p className='votes'>votes: {article.votes}</p>
             <p id='comments'>comments: {article.comment_count}</p>
-            <p id='date'>{article.created_at}</p>
+            <p className='date'>Date: {article.created_at.slice(0, 10)}</p>
             </div>
                 </div>
             })}
+            <Comments article_id={this.props.article_id} path={this.props.path}/>
         </>
-        
     }
 }
 

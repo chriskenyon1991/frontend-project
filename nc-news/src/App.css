@@ -69,7 +69,7 @@
   box-shadow: 1px 1px 3px;
 }
 
-#user {
+.user {
   color: #da1c32;
   margin: 0px;
   padding-right: 0;
@@ -81,6 +81,13 @@
   margin: 0px;
   padding-right: 0;
   width: 50%;
+}
+
+.body {
+  color: #282c34;
+  font-size: 15px;
+  margin-top: 20px;
+  padding-right: 0;
 }
 
 #title:hover {
@@ -96,8 +103,20 @@
   text-decoration: none;
 }
 
-#bottomrow {
+.bottomrow {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+/*----------- comments ------------------------------*/
+
+.commentcard {
+  width: calc(100% - 300px);
+  margin: 20px;
+  margin-left: 15px;
+  padding: 20px;
+  background-color: #e3e8f3d8;
+  border: 1px solid #282c346e;
+  box-shadow: 1.5px 1.5px 10px;
 }

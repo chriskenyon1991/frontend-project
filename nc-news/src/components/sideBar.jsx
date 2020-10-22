@@ -30,16 +30,13 @@ class SideBar extends React.Component{
     render(){
         return <div className='sidebar'>
                     <p><span className='secondaryColor'>&lt;</span>Topics<span className='secondaryColor'>/&gt;</span></p>
-             {this.state.topics.map((topic) => {
-            return <>
-            <Link className='sidelink' to={'/articles?topic=' + topic.slug}>{topic.description}</Link>
-            </>
+             {this.state.topics.map((topic, index) => {
+            return <Link key={index} className='sidelink' to={'/articles/topic/' + topic.slug}>{topic.description}</Link>
         })}
         <p><span className='secondaryColor'>&lt;</span>Users<span className='secondaryColor'>/&gt;</span></p>
-        {this.state.users.map((user) => {
-            return <>
-            <Link className='sidelink' to={'/articles?author=' + user.username}>{user.username}</Link>
-            </>
+        {this.state.users.map((user, index) => {
+            return <Link key={index} className='sidelink' to={'/articles/author/' + user.username}>{user.username}</Link>
+        
         })}
         </div>           
     }
