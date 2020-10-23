@@ -3,12 +3,39 @@
   background-color: #282c34;
   height: 100px;
   width: 100%;
+  margin: auto;
   position: fixed;
   display: flex;
-  justify-content: center;
+  justify-content: space-evenly;
   font-size: calc(10px + 2vmin);
   color: white;
 }
+
+#titlepage {
+  margin: auto;
+}
+
+#username {
+  margin: auto;
+}
+
+#login {
+  text-decoration: none;
+  right: 0px;
+  padding-left: 15px;
+  padding-right: 15px;
+  margin: auto;
+  font-size: 20px;
+  border-radius: 20px;
+  background-color: #282c34;
+  color: #fff;
+}
+
+#login:hover {
+  color: #da1c32;
+  transition: ease-in 0.2s;
+}
+
 /* ----------header-------------------------------------- */
 /* ----------------------sidebar ----------------------*/
 .secondaryColor {
@@ -24,7 +51,7 @@
 
 .sidelink:hover {
   color: #ba1f31;
-  transition: ease-in 0.25s;
+  transition: ease-in 0.2s;
 }
 
 .sidebar {
@@ -55,12 +82,13 @@
   margin: 20px;
   margin-left: 15px;
   padding: 20px;
-  background-color: #c3ceecd8;
+  background-color: #8ca8f7d8;
   border: 1px solid #282c346e;
+  border-radius: 20px;
   box-shadow: 3px 3px 10px;
 }
 
-#buffer {
+.buffer {
   height: 150px;
 }
 
@@ -77,7 +105,7 @@
 }
 
 #title {
-  color: #282c34;
+  color: #fff;
   margin: 0px;
   padding-right: 0;
   width: 50%;
@@ -99,6 +127,33 @@
   color: #282c34;
 }
 
+#top {
+  border: 2px solid #282c34;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
+  padding: 25px;
+  background-color: #282c34;
+  display: flex;
+  justify-content: space-between;
+}
+
+#titlecorner {
+  width: 900px;
+}
+
+#mid {
+  border: 2px solid #282c34;
+  background-color: #da1c3200;
+  padding: 25px;
+  border-bottom-left-radius: 20px;
+  border-bottom-right-radius: 20px;
+}
+
+#comments {
+  color: #282c34;
+  width: 200px;
+}
+
 #topofcard:hover {
   text-decoration: none;
 }
@@ -107,6 +162,49 @@
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+.votes {
+  height: 30px;
+  padding: 0;
+  margin: 0;
+  margin-left: 3px;
+  margin-right: 3px;
+  padding-top: 5px;
+  padding-right: 5px;
+  color: #fff;
+}
+
+#votebutton {
+  display: flex;
+  flex-direction: row;
+  justify-content: initial;
+  height: 30px;
+  border: 2px solid #282c34;
+  border-radius: 30px;
+  margin-top: 8px;
+  margin-left: 15px;
+  /* background-color: rgb(10, 160, 10); */
+}
+#leftbutton {
+  font-size: 20px;
+  border-top-left-radius: 20px;
+  border-bottom-left-radius: 20px;
+  background-color: #282c34;
+  color: #da1c32;
+}
+
+#rightbutton {
+  font-size: 20px;
+  border-top-right-radius: 20px;
+  border-bottom-right-radius: 20px;
+  background-color: #282c34;
+  color: rgb(10, 160, 10);
+}
+#rightbutton:focus {
+  outline: rgb(119, 24, 24);
+}
+#leftbutton:focus {
+  outline: rgb(119, 24, 24);
 }
 
 /*----------- comments ------------------------------*/
@@ -118,5 +216,6 @@
   padding: 20px;
   background-color: #e3e8f3d8;
   border: 1px solid #282c346e;
+  border-radius: 20px;
   box-shadow: 1.5px 1.5px 10px;
 }

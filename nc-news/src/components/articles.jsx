@@ -2,6 +2,9 @@ import React from 'react';
 import axios from 'axios'
 import { Link } from "@reach/router"
 import Comments from '../components/comments'
+import Votes from './votes'
+
+
 
 
 
@@ -13,11 +16,6 @@ class Articles extends React.Component{
     }
 
     componentDidMount(){
-
-        // axios.get('https://chris-kenyon-nc-news.herokuapp.com/api/users').then((res) =>{
-        //     const usersArray = [...res.data.users]
-        //     this.setState({user: usersArray})
-        // })
 
         if(this.props.path === '/'){
             axios.get(`https://chris-kenyon-nc-news.herokuapp.com/api/articles`).then((res) => {
@@ -72,18 +70,26 @@ class Articles extends React.Component{
     
 
     render(){
-        console.log(this.props)
         return <>
-        <div id='buffer'></div>
+        <div className='buffer'></div>
             {this.state.articles.map((article) => {
             return <div key={article.article_id} className='articleCard'>
                 <Link to={'/articles/' + article.article_id} id='topofcard'>
+
+                <div id='top'>
+                    <div id='titlecorner'>
                 <h3 className='user'>{article.author}</h3>
                 <h4 id='title'>{article.title}</h4>
+                    </div>
+                <p id='comments'>comments: {article.comment_count}</p>
+                </div>
+
+                <div id='mid'>
                 <p className='body'>{article.body}</p>
+                </div>
                 </Link>
                 <div className='bottomrow'>
-            <p className='votes'>votes: {article.votes}</p>
+                <Votes article_id={article.article_id} votes={article.votes}/>
             <p id='comments'>comments: {article.comment_count}</p>
             <p className='date'>Date: {article.created_at.slice(0, 10)}</p>
             </div>

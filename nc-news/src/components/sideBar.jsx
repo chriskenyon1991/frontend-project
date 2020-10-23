@@ -27,8 +27,15 @@ class SideBar extends React.Component{
 
     }
 
+    sendData = () => {
+        this.props.parentCallback({users: this.state.users});
+   }
+
+
     render(){
-        return <div className='sidebar'>
+        
+        return ( 
+        <div className='sidebar'>
                     <p><span className='secondaryColor'>&lt;</span>Topics<span className='secondaryColor'>/&gt;</span></p>
              {this.state.topics.map((topic, index) => {
             return <Link key={index} className='sidelink' to={'/articles/topic/' + topic.slug}>{topic.description}</Link>
@@ -38,7 +45,8 @@ class SideBar extends React.Component{
             return <Link key={index} className='sidelink' to={'/articles/author/' + user.username}>{user.username}</Link>
         
         })}
-        </div>           
+        </div>    
+        )    
     }
  
 }

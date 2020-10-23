@@ -1,5 +1,8 @@
 import React from 'react';
 import axios from 'axios'
+import Votes from './votes'
+
+
 
 class Comments extends React.Component{
 
@@ -19,13 +22,12 @@ class Comments extends React.Component{
     }
 
 render(){
-    console.log(this.props)
     return this.state.comments.map((comment) => {
         return <div key={comment.comment_id} className='commentcard'>
             <h3 className='user'>{comment.author}</h3>
             <p>{comment.body}</p>
             <div className='bottomrow'>
-            <p>votes: {comment.votes}</p>
+           <Votes comment_id={comment.comment_id} votes={comment.votes}/>
             <p>Date: {comment.created_at.slice(0, 10)}</p>
             </div>
         </div>
