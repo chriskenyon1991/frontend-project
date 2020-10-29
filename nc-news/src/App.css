@@ -11,8 +11,15 @@
   color: white;
 }
 
+#N {
+  color: #ba1f31;
+}
+
 #titlepage {
   margin: auto;
+  text-decoration: none;
+  color: #fff;
+  font-size: 40px;
 }
 
 #username {
